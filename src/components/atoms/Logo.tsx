@@ -12,10 +12,10 @@ const Logo = () => {
   // </span>
   return (
     <>
-      {currentTheme === 'light' ? (
-        <Image src={logo} alt="logo" width={200} />
-      ) : (
+      {currentTheme === 'dark' ? (
         <Image src={logodark} alt="logo" width={200} />
+      ) : (
+        <Image src={logo} alt="logo" width={200} />
       )}
     </>
   );
