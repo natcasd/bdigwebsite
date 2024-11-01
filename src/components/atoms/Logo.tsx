@@ -2,7 +2,7 @@
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import logo from '~/assets/images/bdig_logo_2.png';
-import logodark from '~/assets/images/bdig_logo_2dark.png';
+import logodark from '~/assets/images/bdig_logo_2dark2.png';
 const Logo = () => {
   const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === 'system' ? systemTheme : theme;
