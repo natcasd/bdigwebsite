@@ -1,6 +1,5 @@
 // pages/PeoplePage.tsx
 
-import { PeopleProps } from '~/shared/types';
 import PersonCard from '~/components/widgets/PersonCard';
 import React from 'react';
 import { fetchPeople, Person } from '~/contentful/memberPeople';

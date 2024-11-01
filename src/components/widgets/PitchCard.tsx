@@ -1,10 +1,7 @@
 // components/PitchCard.tsx
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
-import { PitchProps } from '~/shared/types';
 import { Pitch } from '~/contentful/pitchEntry';
-import slugify from 'slugify';
 
 export interface PitchCardProps {
   pitch: Pitch;
