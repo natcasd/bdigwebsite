@@ -1,48 +1,51 @@
 import React from 'react';
-import { PeopleProps } from '~/shared/types';
-import Image from 'next/image';
+import { Person } from '~/contentful/memberPeople';
 
-const PersonCard = ({ name, image, position, hometown, concentration, derivative, funfact }: PeopleProps) => {
+export interface PersonCardProps {
+  person: Person;
+}
+
+const PersonCard: React.FC<PersonCardProps> = ({ person }) => {
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
       <div className="flex flex-col md:flex-row">
-        {image && (
+        {person.profilePic && (
           <div className="relative w-full h-48 md:w-1/3 md:h-auto">
-            <Image
-              src={`/images/profiles/${image}`}
-              alt={name}
-              className="object-cover w-full h-full"
-              fill
-              sizes="(max-width: 768px) 100vw, 33vw"
-              priority
+            <img
+              className="w-full h-full object-cover"
+              src={person.profilePic.src}
+              // Use the Contentful Images API to render
+              // responsive images. No next/image required:
+              srcSet={`${person.profilePic.src}?w=300 1x, ${person.profilePic.src} 2x`}
+              alt={person.profilePic.alt}
             />
           </div>
         )}
         <div className="p-6 flex-1">
-          {name && <h2 className="text-2xl font-semibold mb-2 text-gray-800 dark:text-white">{name}</h2>}
-          {position && (
+          {person.name && <h2 className="text-2xl font-semibold mb-2 text-gray-800 dark:text-white">{person.name}</h2>}
+          {person.position && (
             <p className="text-gray-600 dark:text-gray-400 mb-1">
-              <i>{position}</i>
+              <i>{person.position}</i>
             </p>
           )}
-          {hometown && (
+          {person.hometown && (
             <p className="text-gray-600 dark:text-gray-400 mb-1">
-              <strong>Hometown:</strong> {hometown}
+              <strong>Hometown:</strong> {person.hometown}
             </p>
           )}
-          {concentration && (
+          {person.concentration && (
             <p className="text-gray-600 dark:text-gray-400 mb-1">
-              <strong>Concentration:</strong> {concentration}
+              <strong>Concentration:</strong> {person.concentration}
             </p>
           )}
-          {derivative && (
+          {person.derivative && (
             <p className="text-gray-600 dark:text-gray-400 mb-1">
-              <strong>Derivative:</strong> {derivative}
+              <strong>Favorite derivative:</strong> {person.derivative}
             </p>
           )}
-          {funfact && (
+          {person.funfact && (
             <p className="text-gray-600 dark:text-gray-400">
-              <strong>Fun Fact:</strong> {funfact}
+              <strong>Fun Fact:</strong> {person.funfact}
             </p>
           )}
         </div>

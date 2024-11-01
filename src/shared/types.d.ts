@@ -77,21 +77,3 @@ type HeaderProps = {
   showRssFeed?: boolean;
   position?: 'center' | 'right' | 'left';
 };
-
-type PeopleProps = {
-  name: string;
-  image: string;
-  position: string;
-  hometown: string;
-  concentration: string;
-  derivative: string;
-  funfact: string;
-};
-
-type PitchProps = {
-  security: string;
-  image?: string;
-  date: string;
-  summary: string;
-  decklink: string;
-};
