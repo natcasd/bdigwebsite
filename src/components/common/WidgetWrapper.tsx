@@ -1,3 +1,4 @@
+import React from 'react';
 import { twMerge } from 'tailwind-merge';
 import { WrapperTagProps } from '~/shared/types';
 import Background from './Background';

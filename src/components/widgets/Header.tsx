@@ -8,8 +8,6 @@ import Link from 'next/link';
 import Logo from '~/components/atoms/Logo';
 import ToggleMenu from '../atoms/ToggleMenu';
 import { headerData } from '~/shared/data/global.data';
-import CTA from '../common/CTA';
-import { CallToActionType } from '~/shared/types';
 
 const Header = () => {
   const { links, actions, isSticky, showToggleTheme, showRssFeed, position } = headerData;
@@ -115,21 +113,7 @@ const Header = () => {
                         className={`${
                           isDropdownOpen[index] ? 'block' : 'md:hidden'
                         } rounded pl-4 font-medium drop-shadow-xl md:absolute md:min-w-[200px] md:bg-white/90 md:pl-0 md:backdrop-blur-md dark:md:bg-slate-900/90 md:border md:border-gray-200 md:dark:border-slate-700`}
-                      >
-                        {links.map(({ label: label2, href: href2 }, index2) => (
-                          <li key={`item-link-${index2}`}>
-                            <Link
-                              className="whitespace-no-wrap block py-2 px-5 first:rounded-t last:rounded-b dark:hover:bg-gray-700 md:hover:bg-gray-200"
-                              href={href2 as string}
-                              onClick={() =>
-                                isToggleMenuOpen ? handleToggleMenuOnClick() : handleCloseDropdownOnClick(index)
-                              }
-                            >
-                              {label2}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
+                      ></ul>
                     </>
                   ) : (
                     <Link
@@ -159,17 +143,6 @@ const Header = () => {
               >
                 <IconRss className="h-5 w-5" />
               </Link>
-            )}
-            {actions && actions.length > 0 && (
-              <div className="ml-4 rtl:ml-0 rtl:mr-4 flex w-max flex-wrap justify-end">
-                {actions.map((callToAction, index) => (
-                  <CTA
-                    key={`item-action-${index}`}
-                    callToAction={callToAction as CallToActionType}
-                    linkClass="btn btn-primary m-1 py-2 px-5 text-sm font-semibold shadow-none md:px-6"
-                  />
-                ))}
-              </div>
             )}
           </div>
         </div>
