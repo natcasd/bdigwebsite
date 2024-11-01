@@ -37,14 +37,6 @@ const Header = () => {
     });
   };
 
-  const handleCloseDropdownOnClick = (index: number) => {
-    setIsDropdownOpen((prevValues) => {
-      const newValues = [...(prevValues as boolean[])];
-      newValues[index] = false;
-      return newValues;
-    });
-  };
-
   const handleToggleMenuOnClick = () => {
     setIsToggleMenuOpen(!isToggleMenuOpen);
   };
@@ -97,7 +89,7 @@ const Header = () => {
                   {links && links.length ? (
                     <>
                       <button
-                        className="flex items-center px-4 py-3 font-medium transition duration-150 ease-in-out hover:text-gray-900 dark:hover:text-white"
+                        className="flex items-center px-4 py-3 font-medium transition duration-150 ease-in-out text-gray-50 hover:text-black-900 dark:hover:text-white"
                         onClick={() => handleDropdownOnClick(index)}
                       >
                         {label}{' '}
@@ -117,8 +109,8 @@ const Header = () => {
                     </>
                   ) : (
                     <Link
-                      className="flex items-center px-4 py-3 font-medium transition duration-150 ease-in-out hover:text-gray-900 dark:hover:text-white"
                       href={href as string}
+                      className="flex items-center px-4 py-3 font-medium transition duration-150 text-opacity-45 ease-in-out dark:hover:text-white hover:underline underline-offset-2 decoration-solid dark:decoration-white"
                       onClick={() => (isToggleMenuOpen ? handleToggleMenuOnClick() : handleDropdownOnClick(index))}
                     >
                       {label}
