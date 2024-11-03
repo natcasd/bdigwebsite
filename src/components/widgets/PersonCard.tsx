@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import { Person } from '~/contentful/memberPeople';
 
 export interface PersonCardProps {
@@ -6,46 +7,78 @@ export interface PersonCardProps {
 }
 
 const PersonCard: React.FC<PersonCardProps> = ({ person }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  const handleCardClick = () => {
+    setIsFlipped(!isFlipped);
+  };
+
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-      <div className="flex flex-col md:flex-row">
+    <div className="bg-white dark:bg-gray-800 rounded-lg overflow-clip shadow-lg h-96 " onClick={handleCardClick}>
+      <div className="relative w-full h-full">
         {person.profilePic && (
-          <div className="relative w-full h-48 md:w-1/3 md:h-auto">
+          <>
+            {/* Profile Image */}
             <img
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover transition-transform duration-700"
               src={person.profilePic.src}
-              // Use the Contentful Images API to render
-              // responsive images. No next/image required:
-              srcSet={`${person.profilePic.src}?w=300 1x, ${person.profilePic.src} 2x`}
               alt={person.profilePic.alt}
+              style={{ transform: isFlipped ? 'translateY(-100%)' : 'translateY(0)', objectPosition: 'top' }}
             />
-          </div>
+
+            {/* Sliding Banner */}
+            <div
+              className={`absolute bottom-0 w-full text-white py-2 px-4 transition-all duration-700 ${
+                isFlipped ? 'translate-y-[-500%]' : 'translate-y-0'
+              }`}
+              style={{ backgroundColor: isFlipped ? 'rgba(0,0,0,0.5)' : 'rgba(0,0,0,0.5)' }}
+            >
+              <h2 className="text-xl font-semibold">{person.name}</h2>
+              {person.position && (
+                <p className="text-sm whitespace-nowrap overflow-hidden text-ellipsis">
+                  <i>{person.position}</i>
+                </p>
+              )}
+            </div>
+          </>
         )}
-        <div className="p-6 flex-1">
-          {person.name && <h2 className="text-2xl font-semibold mb-2 text-gray-800 dark:text-white">{person.name}</h2>}
-          {person.position && (
-            <p className="text-gray-600 dark:text-gray-400 mb-1">
-              <i>{person.position}</i>
-            </p>
-          )}
+
+        {/* Additional Details Section */}
+        <div
+          className={`absolute bottom-10 w-full bg-white dark:bg-gray-800 p-6 transition-all duration-700 ${
+            isFlipped ? 'translate-y-0' : 'translate-y-full opacity-0'
+          }`}
+        >
           {person.hometown && (
             <p className="text-gray-600 dark:text-gray-400 mb-1">
-              <strong>Hometown:</strong> {person.hometown}
+              <strong>
+                <u>Hometown:</u>
+              </strong>
+              <span className="block">{person.hometown}</span>
             </p>
           )}
           {person.concentration && (
             <p className="text-gray-600 dark:text-gray-400 mb-1">
-              <strong>Concentration:</strong> {person.concentration}
+              <strong>
+                <u>Concentration:</u>
+              </strong>
+              <span className="block">{person.concentration}</span>
             </p>
           )}
           {person.derivative && (
             <p className="text-gray-600 dark:text-gray-400 mb-1">
-              <strong>Favorite derivative:</strong> {person.derivative}
+              <strong>
+                <u>Favorite derivative:</u>
+              </strong>{' '}
+              <span className="block">{person.derivative}</span>
             </p>
           )}
           {person.funfact && (
             <p className="text-gray-600 dark:text-gray-400">
-              <strong>Fun Fact:</strong> {person.funfact}
+              <strong>
+                <u>Fun Fact:</u>
+              </strong>{' '}
+              <span className="block">{person.funfact}</span>
             </p>
           )}
         </div>
@@ -53,5 +86,4 @@ const PersonCard: React.FC<PersonCardProps> = ({ person }) => {
     </div>
   );
 };
-
 export default PersonCard;

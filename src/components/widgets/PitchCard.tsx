@@ -9,15 +9,14 @@ export interface PitchCardProps {
 
 const PitchCard: React.FC<PitchCardProps> = ({ pitch }) => {
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+    <div className="bg-white dark:bg-gray-800 rounded-lg hover:shadow-lg">
       {pitch.image && (
-        <div className="relative w-full h-48">
+        <div className="w-full h-48 flex items-stretch">
           <img
-            className="w-full h-full object-cover"
+            className=" w-full h-full rounded-t-lg"
             src={pitch.image.src}
             // Use the Contentful Images API to render
             // responsive images. No next/image required:
-            srcSet={`${pitch.image.src}?w=300 1x, ${pitch.image.src} 2x`}
             alt={pitch.image.alt}
           />
         </div>

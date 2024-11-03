@@ -8,7 +8,7 @@ export const headerData: HeaderProps = {
       href: '/about',
     },
     {
-      label: 'People',
+      label: 'Our Team',
       href: '/people',
     },
     {
