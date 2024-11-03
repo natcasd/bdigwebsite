@@ -4,8 +4,8 @@ import { HeaderProps } from '../types';
 export const headerData: HeaderProps = {
   links: [
     {
-      label: 'About Us',
-      href: '/about',
+      label: 'Home',
+      href: '/',
     },
     {
       label: 'Our Team',
@@ -15,13 +15,9 @@ export const headerData: HeaderProps = {
       label: 'Pitches',
       href: '/pitches',
     },
-    {
-      label: 'Join Us',
-      href: '/join',
-    },
   ],
   isSticky: true,
-  showToggleTheme: true,
+  showToggleTheme: false,
   showRssFeed: false,
   position: 'right',
 };

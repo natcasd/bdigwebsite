@@ -2,8 +2,8 @@ import React from 'react';
 
 const AboutUs: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-start min-h-screen pt-0 px-4 md:px-20 bg-white dark:bg-gray-900">
-      <h1 className="text-4xl md:text-5xl font-bold text-center text-gray-800 dark:text-white mb-6 mt-4 md:mt-6">
+    <div className="flex flex-col items-center justify-start min-h-screen pt-0 px-4 md:px-80 bg-white dark:bg-gray-900">
+      <h1 className="text-4xl md:text-5xl font-bold text-center text-gray-800 dark:text-white mb-10 mt-4 md:mt-6">
         Our Story
       </h1>
 

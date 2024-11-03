@@ -5,10 +5,10 @@ import { SITE } from '~/config.js';
 import Providers from '~/components/atoms/Providers';
 import Header from '~/components/widgets/Header';
 
-import { Inter as CustomFont } from 'next/font/google';
+import { Noto_Serif as CustomFont } from 'next/font/google';
 import '~/assets/styles/base.css';
 
-const customFont = CustomFont({ subsets: ['latin'], variable: '--font-custom' });
+const customFont = CustomFont({ weight: '400', subsets: ['latin'], variable: '--font-custom' });
 
 export interface LayoutProps {
   children: React.ReactNode;

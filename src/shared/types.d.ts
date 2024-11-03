@@ -77,3 +77,8 @@ type HeaderProps = {
   showRssFeed?: boolean;
   position?: 'center' | 'right' | 'left';
 };
+
+type AboutUsProps = {
+  title: string;
+  content: string[];
+};

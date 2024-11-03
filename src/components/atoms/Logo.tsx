@@ -3,6 +3,8 @@ import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import logo from '~/assets/images/bdig_logo_2.png';
 import logodark from '~/assets/images/bdig_logo_2dark2.png';
+import oldlogo from '~/assets/images/banner-white.png';
+
 const Logo = () => {
   const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === 'system' ? systemTheme : theme;
@@ -12,11 +14,12 @@ const Logo = () => {
   // </span>
   return (
     <>
-      {currentTheme === 'dark' ? (
+      {/* {currentTheme === 'dark' ? (
         <Image src={logodark} alt="logo" width={200} />
       ) : (
         <Image src={logo} alt="logo" width={200} />
-      )}
+      )} */}
+      <Image src={oldlogo} alt="logo" width={500} />
     </>
   );
 };
