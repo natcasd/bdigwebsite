@@ -10,7 +10,7 @@ import ToggleMenu from '../atoms/ToggleMenu';
 import { headerData } from '~/shared/data/global.data';
 
 const Header = () => {
-  const { links, actions, isSticky, showToggleTheme, showRssFeed, position } = headerData;
+  const { links, isSticky, showToggleTheme, showRssFeed, position } = headerData;
 
   const ref = useRef(null);
 
@@ -84,29 +84,17 @@ const Header = () => {
             className="flex w-full flex-col mt-2 mb-36 md:m-0 text-xl md:w-auto md:flex-row md:self-center md:pt-0 md:text-base"
           >
             {links &&
-              links.map(({ label, href, icon: Icon, links }, index) => (
+              links.map(({ label, href, cta }, index) => (
                 <li key={`item-link-${index}`} className={links?.length ? 'dropdown' : ''}>
-                  {links && links.length ? (
-                    <>
+                  {cta ? (
+                    <Link href={href as string}>
                       <button
-                        className="flex items-center px-4 py-3 font-medium transition duration-150 ease-in-out text-gray-50 hover:text-black-900 dark:hover:text-white"
-                        onClick={() => handleDropdownOnClick(index)}
+                        onClick={() => (isToggleMenuOpen ? handleToggleMenuOnClick() : handleDropdownOnClick(index))}
+                        className="ml-2 flex items-center mt-2 md:mt-0 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-3 px-4 border border-gray-400 rounded shadow"
                       >
-                        {label}{' '}
-                        {Icon && (
-                          <Icon
-                            className={`${
-                              isDropdownOpen[index] ? 'rotate-180' : ''
-                            } ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden h-3.5 w-3.5 md:inline`}
-                          />
-                        )}
+                        <span className="text-black">{label}</span>
                       </button>
-                      <ul
-                        className={`${
-                          isDropdownOpen[index] ? 'block' : 'md:hidden'
-                        } rounded pl-4 font-medium drop-shadow-xl md:absolute md:min-w-[200px] md:bg-white/90 md:pl-0 md:backdrop-blur-md dark:md:bg-slate-900/90 md:border md:border-gray-200 md:dark:border-slate-700`}
-                      ></ul>
-                    </>
+                    </Link>
                   ) : (
                     <Link
                       href={href as string}

@@ -71,7 +71,6 @@ type ContentProps = Widget & {
 
 type HeaderProps = {
   links?: Array<MenuLink>;
-  actions?: Array<CallToActionType>;
   isSticky?: boolean;
   showToggleTheme?: boolean;
   showRssFeed?: boolean;
@@ -81,4 +80,15 @@ type HeaderProps = {
 type AboutUsProps = {
   title: string;
   content: string[];
+};
+
+type GalleryImage = {
+  src: StaticImageData;
+  width: number;
+  height: number;
+  alt: string;
+};
+
+type GalleryImagesProps = {
+  images: GalleryImage[];
 };
