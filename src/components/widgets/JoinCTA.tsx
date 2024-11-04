@@ -18,7 +18,7 @@ const JoinCTA = () => {
             />
           </div>
           <Link href="/join">
-            <h1 className="text-7xl font-bold md:text-6xl lg:text-7xl hover:underline">Join Us</h1>
+            <h1 className="text-6xl font-bold md:text-6xl lg:text-7xl hover:underline">Join Us</h1>
           </Link>
         </div>
       </div>
