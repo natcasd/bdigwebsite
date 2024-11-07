@@ -16,8 +16,8 @@ const PersonCard: React.FC<PersonCardProps> = ({ person }) => {
   return (
     <div
       className="bg-white dark:bg-gray-800 rounded-lg overflow-clip shadow-lg h-96 "
-      onMouseEnter={() => setIsFlipped(true)}
-      onMouseLeave={() => setIsFlipped(false)}
+      // onMouseEnter={() => setIsFlipped(true)}
+      // onMouseLeave={() => setIsFlipped(false)}
       onClick={handleCardClick}
     >
       <div className="relative w-full h-full">
