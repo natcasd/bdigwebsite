@@ -9,7 +9,7 @@ import bdigphoto6 from '~/assets/images/bdigphoto6.jpg';
 
 // Hero data on Home page *******************
 export const heroHome: HeroProps = {
-  title: <>We are the Brown Derivatives Investment Group.</>,
+  title: <>We are Brown Derivatives Investment Group.</>,
 
   image: {
     src: heroImg,
